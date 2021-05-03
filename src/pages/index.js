@@ -5,12 +5,14 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import HomePageTemplate from "../templates/homePageTemplate"
+import PostTemplate from "../templates/postTemplate"
 
 const IndexPage = () => {
   return (
     <Layout>
       <Seo title="Home" />
       <HomePageTemplate />
+      {/* <PostTemplate /> */}
     </Layout>
   )
 }

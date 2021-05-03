@@ -32,7 +32,8 @@ const Header = ({toggle}) => {
         <Link className="p-4 hover:underline hover:text-yellow-500" to='/nft'>NFT</Link>
         <Link className="p-4 hover:underline hover:text-yellow-500" to='/bitcoin'>Bitcoin</Link>
         <Link className="p-4 hover:underline hover:text-yellow-500" to='/altcoin'>Altcoins</Link>
-        <Link className="bg-yellow-500 text-white px-4 py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100" to='/signin'>Sign In</Link>
+        <Link className="bg-yellow-500 text-white px-4 py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100" to='/login'>Manage Content</Link>
+        <Link className="bg-yellow-500 text-white px-4 py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100" to='/login'>Sign In</Link>
       </div>
     </nav>
   )

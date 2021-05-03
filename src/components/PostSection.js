@@ -1,22 +1,24 @@
-import React from 'react'
+import React from "react"
 
-import BigPost from './BigPost'
+import BigPost from "./BigPost"
 
-const PostSection = () => {
-
-    return(
-        <div>
-            <BigPost />
-            <BigPost />
-            <BigPost />
-            <BigPost />
-            <BigPost />
-            <BigPost />
-            <BigPost />
-            <BigPost />
-        </div>
+const PostSection = ({ articles }) => {
+  if (articles) {
+    return (
+      <div>
+        {articles.allArticle.edges.map( edge => (
+          <BigPost
+            title={edge.node.title}
+            author={edge.node.author}
+            content={edge.node.content}
+            category={edge.node.category}
+          />
+        ) ) }
+      </div>
     )
-
+  } else {
+    return <div>Loading articles...</div>
+  }
 }
 
 export default PostSection

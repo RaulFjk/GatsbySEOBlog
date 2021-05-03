@@ -34,7 +34,7 @@ const SmallPost = () => {
         </div>
       </div>
 
-      <div className="rounded border-b-2 border-gray-100 w-full flex flex-col md:flex-row mb-10">
+      {/* <div className="rounded border-b-2 border-gray-100 w-full flex flex-col md:flex-row mb-10">
         <img
           src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
           className="block md:hidden lg:block rounded-md h-64 md:h-32 m-4 md:m-0"
@@ -80,7 +80,7 @@ const SmallPost = () => {
             or
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

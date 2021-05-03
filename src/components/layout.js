@@ -47,10 +47,11 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header toggle={toggle} />
-      <Dropdowm isOpen={isOpen} toggle={toggle} />
-      <div >
-        <main className="overflow-hidden flex items-center justify-center ">
+        <Header toggle={toggle} />
+        
+      <div>
+        <main className="overflow-hidden block items-center justify-center ">
+        <Dropdowm isOpen={isOpen} toggle={toggle} />
           {children}
         </main>
         <footer className="bg-gray-800 p-10 sm:mt-10">
