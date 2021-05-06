@@ -13,7 +13,7 @@ const BigPost = ({title, author, content, category}) => {
       </div>
       <div className="bg-white rounded md:w-2/3">
         <div className="md:mt-0 text-gray-800 font-semibold text-xl mb-1 hover:text-yellow-500">
-          {title}.
+          {title}
         </div>
         <p className="block line-clamp-5 break normal md:pt-3 md:p-2 md:pl-0 md:h-44 md:text-sm text-gray-600 max-w-xl max-h-28 ">
          {content}

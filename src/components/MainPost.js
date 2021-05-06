@@ -2,7 +2,7 @@ import React from "react"
 
 import { Link } from "gatsby"
 
-const MainPost = () => {
+const MainPost = ({title, category}) => {
   return (
     <div className="mb-4 lg:mb-0 p-4 lg:p-0 w-full md:w-4/7 rounded block">
       <Link className="cursor-pointer">
@@ -13,15 +13,14 @@ const MainPost = () => {
       </Link>
       <div className="flex items-center">
         <span className="text-yellow-600 text-sm hidden md:block mr-6 ">
-          {" "}
-          Technology{" "}
+          {category}
         </span>
-        <span className="text-gray-600 text-sm hidden md:block bg-yellow-500 p-1 rounded">
+        <span className="text-gray-600 text-xs hidden md:block bg-yellow-500 p-1 rounded">
           Featured
         </span>
       </div>
       <Link className="text-gray-800 text-4xl font-bold mt-2 mb-2 leading-tight cursor-pointer hover:text-yellow-500">
-        Ignorant branched humanity led now marianne too.
+        {title}
       </Link>
       <p className="text-gray-600 mb-4">
         Necessary ye contented newspaper zealously breakfast he prevailed.

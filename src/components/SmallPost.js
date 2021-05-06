@@ -2,7 +2,7 @@ import React from "react"
 
 import { Link } from "gatsby"
 
-const SmallPost = () => {
+const SmallPost = ({title, category}) => {
   return (
     <div class="w-full md:w-4/7">
       <div className="rounded border-b-2 border-gray-100 w-full flex flex-col md:flex-row mb-10">
@@ -13,17 +13,15 @@ const SmallPost = () => {
         <div className="bg-white rounded px-4">
           <div className="flex items-center">
             <span className="text-yellow-600 text-sm hidden md:block mr-6">
-              {" "}
-              Gadgets{" "}
+              {category}
             </span>
-            <span className="text-gray-600 text-sm hidden md:block bg-yellow-500 p-1 rounded">
+            <span className="text-gray-600 text-xs hidden md:block bg-yellow-500 p-1 rounded">
               Featured
             </span>
           </div>
           <div className="mb-2">
             <Link className="md:mt-0 text-gray-800 font-semibold text-xl cursor-pointer hover:text-yellow-500">
-              At every tiled on ye defer do. No attention suspected oh
-              difficult.
+              {title}
             </Link>
           </div>
           <p className="block md:hidden p-2 pl-0 pt-1 text-sm text-gray-600">
@@ -53,7 +51,6 @@ const SmallPost = () => {
           <p className="block md:hidden p-2 pl-0 pt-1 text-sm text-gray-600">
             Wonder matter now can estate esteem assure fat roused. Am performed
             on existence as discourse is. Pleasure friendly at marriage blessing
-            or
           </p>
         </div>
       </div>

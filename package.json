@@ -7,6 +7,7 @@
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.2.0",
     "autoprefixer": "^10.2.5",
+    "firebase": "^8.5.0",
     "gatsby": "^3.3.1",
     "gatsby-firesource": "^2.0.3",
     "gatsby-plugin-gatsby-cloud": "^2.2.0",

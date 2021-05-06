@@ -8,6 +8,7 @@
 import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { FirebaseContext, useAuth } from "./Firebase"
 
 import Header from "./header"
 import "./layout.css"
@@ -15,6 +16,8 @@ import Dropdowm from "./Dropdown"
 import Footer from "./Footer"
 
 const Layout = ({ children }) => {
+  const { user, firebase, loading } = useAuth()
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -47,17 +50,18 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <FirebaseContext.Provider value={{user, firebase, loading}}>
         <Header toggle={toggle} />
-        
-      <div>
-        <main className="overflow-hidden block items-center justify-center ">
-        <Dropdowm isOpen={isOpen} toggle={toggle} />
-          {children}
-        </main>
-        <footer className="bg-gray-800 p-10 sm:mt-10">
-          <Footer />
-        </footer>
-      </div>
+        <div>
+          <main className="overflow-hidden block items-center justify-center ">
+            <Dropdowm isOpen={isOpen} toggle={toggle} />
+            {children}
+          </main>
+          <footer className="bg-gray-800 p-10 sm:mt-10">
+            <Footer />
+          </footer>
+        </div>
+      </FirebaseContext.Provider>
     </>
   )
 }
