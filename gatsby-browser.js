@@ -1,2 +1,8 @@
-import './src/components/layout.css';
+const fetch = require("node-fetch");
+const React = require('react');
+const Layout = require('./src/components/layout').default
 
+exports.wrapPageElement = ({element, props}) => {
+    return <Layout {...props}>{element}</Layout>
+
+}

@@ -6,14 +6,18 @@ const PostSection = ({ articles }) => {
   if (articles) {
     return (
       <div>
-        {articles.allArticle.edges.map( edge => (
+        {articles.allArticle.edges.map(edge => (
           <BigPost
+            id={edge.node.id}
             title={edge.node.title}
-            author={edge.node.author}
+            authorFirstName={edge.node.author.firstName}
+            authorLastName={edge.node.author.lastName}
             content={edge.node.content}
             category={edge.node.category}
+            posted={edge.node.posted}
+            image={edge.node.localImage.childImageSharp.gatsbyImageData}
           />
-        ) ) }
+        ))}
       </div>
     )
   } else {

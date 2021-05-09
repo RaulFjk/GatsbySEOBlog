@@ -5,9 +5,9 @@ import Layout from "../components/layout"
 
 const BitcoinPage = (props) => {
   return (
-    <Layout>
+    <section>
       <PostPageTemplate articles={props.data} category="Bitcoin" />
-    </Layout>
+    </section>
   )
 }
 
@@ -16,11 +16,20 @@ export const query = graphql`
   allArticle(filter: {category: {eq: "bitcoin"}}) {
     edges {
       node {
-        author
+        author {
+          firstName
+          lastName
+        }
         id
         title
         content
         category
+        posted
+        localImage {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
       }
     }
   }

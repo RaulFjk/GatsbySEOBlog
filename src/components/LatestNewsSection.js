@@ -10,7 +10,6 @@ const LatestNewsSection = ({ firebase }) => {
     if (firebase) {
       const unsubscribe = firebase.subscribeToLatestNews({
         onSnapshot: snapshot => {
-          console.log(snapshot)
           const snapshotArticles = []
           snapshot.forEach(doc => {
             snapshotArticles.push({
@@ -25,8 +24,6 @@ const LatestNewsSection = ({ firebase }) => {
     }
   }, [firebase])
 
-  console.log(articles)
-
   return (
     <div>
       <div className="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
@@ -36,10 +33,13 @@ const LatestNewsSection = ({ firebase }) => {
         {articles &&
           articles.map(article => (
             <BigPost
+              id={article.id}
               title={article.title}
               author={article.author}
               content={article.content}
               category={article.category}
+              posted = {article.posted.toDate()}
+              imageUrl = {article.imageUrl}
             />
           ))}
       </div>

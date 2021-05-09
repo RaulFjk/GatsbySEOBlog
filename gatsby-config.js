@@ -11,6 +11,9 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: 'gatsby-firesource',
       options: {
@@ -35,9 +38,18 @@ module.exports = {
               title: doc.title,
               content: doc.content,
               category: doc.category,
-              author: doc.author,
-              posted: doc.posted,
-              featured: doc.featured
+              author___NODE: doc.author.id,
+              posted: doc.posted.toDate(),
+              featured: doc.featured,
+              imageUrl: doc.imageUrl
+            })
+          },
+          {
+            type: 'Author',
+            collection: 'user',
+            map: doc => ({
+              firstName: doc.firstName,
+              lastName:  doc.lastName
             })
           }
         ]
@@ -63,6 +75,13 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: 'Article',
+        imagePath: 'imageUrl',
       },
     },
     `gatsby-plugin-gatsby-cloud`,

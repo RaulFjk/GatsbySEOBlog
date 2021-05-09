@@ -6,9 +6,9 @@ import Layout from "../components/layout"
 
 const ExclusivesPage = (props) => {
   return (
-    <Layout>
+    <section>
       <PostPageTemplate articles={props.data} category="Exclusives" />
-    </Layout>
+    </section>
   )
 }
 
@@ -16,11 +16,20 @@ export const query = graphql`{
   allArticle(filter: {category: {eq: "exclusives"}}) {
     edges {
       node {
-        author
+        author {
+          firstName
+          lastName
+        }
         id
         title
         content
         category
+        posted
+        localImage {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
       }
     }
   }

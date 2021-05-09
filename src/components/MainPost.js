@@ -1,25 +1,40 @@
 import React from "react"
-
 import { Link } from "gatsby"
+import moment from "moment"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-const MainPost = ({title, category}) => {
+const MainPost = ({ id, title, category, authorFirstName, authorLastName, posted, image }) => {
   return (
     <div className="mb-4 lg:mb-0 p-4 lg:p-0 w-full md:w-4/7 rounded block">
       <Link className="cursor-pointer">
-        <img
+        <GatsbyImage
+          image={image}
+          className="rounded-md w-full h-64 mb-5"
+        />
+        {/* <img
           src="https://images.unsplash.com/photo-1427751840561-9852520f8ce8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
           className="rounded-md object-cover w-full h-64"
-        />
+        /> */}
       </Link>
       <div className="flex items-center">
-        <span className="text-yellow-600 text-sm hidden md:block mr-6 ">
+        <span className="text-yellow-600 text-base hidden md:block">
           {category}
         </span>
+        <span className="mx-3 hidden md:block">|</span>
         <span className="text-gray-600 text-xs hidden md:block bg-yellow-500 p-1 rounded">
           Featured
         </span>
+        <span className="mx-3 hidden md:block">|</span>
+        <span className="text-sm text-gray-400 hidden md:block">{authorFirstName + ' ' + authorLastName}</span>
+        <span className="mx-3 hidden md:block">|</span>
+        <span className="text-sm text-gray-400 hidden md:block">
+          {moment(posted).format("HH:mm Do MMM YYYY")}
+        </span>
       </div>
-      <Link className="text-gray-800 text-4xl font-bold mt-2 mb-2 leading-tight cursor-pointer hover:text-yellow-500">
+      <Link
+        className="text-gray-800 text-4xl font-bold mt-2 mb-2 leading-tight cursor-pointer hover:text-yellow-500"
+        to={`/article/${id}`}
+      >
         {title}
       </Link>
       <p className="text-gray-600 mb-4">

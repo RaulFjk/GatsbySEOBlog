@@ -9,11 +9,11 @@ import PostTemplate from "../templates/postTemplate"
 
 const IndexPage = () => {
   return (
-    <Layout>
+    <section>
       <Seo title="Home" />
       <HomePageTemplate />
       {/* <PostTemplate /> */}
-    </Layout>
+    </section>
   )
 }
 export default IndexPage

@@ -1,22 +1,60 @@
 import React from "react"
-
 import { Link } from "gatsby"
+import moment from "moment"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-const BigPost = ({title, author, content, category}) => {
+const BigPost = ({
+  id,
+  title,
+  authorFirstName,
+  authorLastName,
+  content,
+  category,
+  posted,
+  imageUrl,
+  image,
+}) => {
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+
   return (
     <div className="rounded w-full p-4 lg:p-0 border-b-2 border-gray-50 flex flex-col md:flex-row mb-10">
       <div className="cursor-pointer md:w-1/3">
-        <img
-          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
-          className="block lg:block rounded-md h-64 md:h-full md:w-60 px-4 md:px-0 md:m-0"
-        />
+        {image ? (
+          <GatsbyImage
+            image={image}
+            className="block lg:block z-0 rounded-md md:h-full md:w-72"
+          />
+        ) : (
+          <img
+            src={imageUrl}
+            className="block lg:block rounded-md w-full h-64 md:h-full lg:w-72 px-4 md:px-0 md:m-0"
+          />
+        )}
       </div>
-      <div className="bg-white rounded md:w-2/3">
-        <div className="md:mt-0 text-gray-800 font-semibold text-xl mb-1 hover:text-yellow-500">
+      <div className="bg-white lg:m-0 rounded md:w-2/3 ml-3 md:ml-20 lg:ml-0">
+        <Link
+          to={`/article/${id}`}
+          className="md:mt-0 text-gray-800 font-semibold text-xl mb-1 hover:text-yellow-500"
+        >
           {title}
+        </Link>
+        <div className="flex items-center mt-1">
+          <span className="text-yellow-600 text-base hidden md:block">
+            {capitalizeFirstLetter(category)}
+          </span>
+          <span className="mx-3 hidden md:block">|</span>
+          <span className="text-sm text-gray-400 hidden md:block">
+            {authorFirstName + ' ' + authorLastName}
+          </span>
+          <span className="mx-3 hidden md:block">|</span>
+          <span className="text-sm text-gray-400 hidden md:block">
+            {moment(posted).format("HH:mm Do MMM YYYY")}
+          </span>
         </div>
         <p className="block line-clamp-5 break normal md:pt-3 md:p-2 md:pl-0 md:h-44 md:text-sm text-gray-600 max-w-xl max-h-28 ">
-         {content}
+          {content}
         </p>
       </div>
     </div>
