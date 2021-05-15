@@ -49,7 +49,6 @@ const Layout = ({ children }) => {
   })
 
   return (
-    <>
       <FirebaseContext.Provider value={{user, firebase, loading}}>
         <Header toggle={toggle} />
         <div>
@@ -62,7 +61,6 @@ const Layout = ({ children }) => {
           </footer>
         </div>
       </FirebaseContext.Provider>
-    </>
   )
 }
 

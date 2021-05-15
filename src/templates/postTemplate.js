@@ -14,6 +14,7 @@ const PostTemplate = props => {
           category={props.data.article.category}
           authorFirstName={props.data.article.author.firstName}
           authorLastName={props.data.article.author.lastName}
+          authorAvatar = {props.data.article.author.localImage.childImageSharp.gatsbyImageData}
           image= {props.data.article.localImage.childImageSharp.gatsbyImageData}
         />
       </section>
@@ -27,6 +28,11 @@ export const query = graphql`
       author {
         firstName
         lastName
+        localImage {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
       }
       category
       content

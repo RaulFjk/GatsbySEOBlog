@@ -25,8 +25,19 @@ class Firebase {
       .onSnapshot(onSnapshot)
   }
 
+  filterArticlesByCategory({ category, onSnapshot }) {
+    return this.db
+      .collection("articles")
+      .where("category", "==", category)
+      .onSnapshot(onSnapshot)
+  }
+
   async getAuthors() {
     return this.db.collection("authors").get()
+  }
+
+  async getCategories() {
+    return this.db.collection("categories").get()
   }
 
   async createBook({ bookName, authorId, bookCover, summary }) {
@@ -36,6 +47,17 @@ class Firebase {
       authorId,
       bookCover,
       summary,
+    })
+  }
+
+  async createArticle({ title, content, categoryName, articleCover, featured }) {
+    const createArticleCallable = this.functions.httpsCallable("createArticle")
+    return createArticleCallable({
+      title,
+      content,
+      categoryName,
+      articleCover,
+      featured,
     })
   }
 
@@ -73,12 +95,12 @@ class Firebase {
       .onSnapshot(onSnapshot)
   }
 
-  subscribeToLatestNews({onSnapshot }) {
+  subscribeToLatestNews({ onSnapshot }) {
     return this.db
-    .collection("articles")
-    .orderBy("posted", "desc")
-    .limit(10)
-    .onSnapshot(onSnapshot)
+      .collection("articles")
+      .orderBy("posted", "desc")
+      .limit(10)
+      .onSnapshot(onSnapshot)
   }
 
   async login({ email, password }) {

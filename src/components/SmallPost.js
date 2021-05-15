@@ -5,11 +5,12 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 const SmallPost = ({ id, title, category, image }) => {
   return (
-    <div class="w-full md:w-4/7">
+    <div className="w-full md:w-4/7">
       <div className="rounded border-b-2 border-gray-50 w-full flex flex-col md:flex-row mb-10 p-4 lg:p-0">
-        <div classsName="md:w-1/3 ">
+        <div>
           <GatsbyImage
             image={image}
+            alt="post cover"
             className="md:hidden lg:block rounded-md w-full h-64 md:w-44 md:h-32 md:m-0"
           />{" "}
         </div>

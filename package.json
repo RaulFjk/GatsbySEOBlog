@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^27.1.0",
+    "@ckeditor/ckeditor5-react": "^3.0.2",
     "@tailwindcss/line-clamp": "^0.2.0",
     "autoprefixer": "^10.2.5",
     "firebase": "^8.5.0",
@@ -26,6 +28,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-html-parser": "^2.0.2",
     "tailwindcss": "^2.1.1"
   },
   "devDependencies": {

@@ -7,22 +7,64 @@ const LatestNewsSection = ({ firebase }) => {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
-    if (firebase) {
-      const unsubscribe = firebase.subscribeToLatestNews({
-        onSnapshot: snapshot => {
-          const snapshotArticles = []
-          snapshot.forEach(doc => {
-            snapshotArticles.push({
-              id: doc.id,
-              ...doc.data(),
-            })
-          })
+    let promises = []
+    const unsubscribe = firebase.subscribeToLatestNews({
+      onSnapshot: snapshot => {
+        const snapshotArticles = []
 
-          setArticles(snapshotArticles)
-        },
-      })
+        snapshot.forEach(doc => {
+          // let article = doc.data()
+          // let dataAuthor
+          // if (article.author) {
+          //  // promises.push(article.author.get())
+          //   dataAuthor = await article.author.get()
+          //   console.log(dataAuthor.data())
+          //   // .then(res =>{
+          //   //   let authorData = res.data()
+          //   //   let addArticle = doc.data()
+          //   //   finishedArticles.push({
+          //   //     id: doc.id,
+          //   //     authorData: authorData,
+          //   //     ...addArticle
+          //   //   })
+          //   // }
+          //   // )
+          //   // .catch(err => console.log(err))
+          //   // if(finishedArticles.length > 0){
+          //   //   setArticles(finishedArticles)
+          //   // }
+          // }
+          snapshotArticles.push({
+            id: doc.id,
+            ...doc.data(),
+          })
+        })
+
+        // const solvedPromises = Promise.all(promises)
+        // let authorData = []
+        // solvedPromises.then( data => {
+        //   data.forEach( p => {
+        //     authorData.push({
+        //       id: p.id,
+        //       ...p.data()
+        //     })
+        //   })
+        // }
+        // )
+        // authorData.forEach( (author, index) =>{
+        //   console.log(author + '' + index)
+
+        // })
+
+        setArticles(snapshotArticles)
+      },
+    })
+    return () => {
+      if (unsubscribe) {
+        unsubscribe()
+      }
     }
-  }, [firebase])
+  }, [])
 
   return (
     <div>
@@ -34,12 +76,12 @@ const LatestNewsSection = ({ firebase }) => {
           articles.map(article => (
             <BigPost
               id={article.id}
+              key={article.id}
               title={article.title}
-              author={article.author}
               content={article.content}
               category={article.category}
-              posted = {article.posted.toDate()}
-              imageUrl = {article.imageUrl}
+              posted={article.posted.toDate()}
+              imageUrl={article.imageUrl}
             />
           ))}
       </div>

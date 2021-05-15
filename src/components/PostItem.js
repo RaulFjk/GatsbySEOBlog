@@ -1,7 +1,7 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const PostItem = ({ title, content, authorFirstName, authorLastName, category, image }) => {
+const PostItem = ({ title, content, authorFirstName, authorLastName, category, image, authorAvatar }) => {
   return (
     <section>
       <div className="mb-4 md:mb-0 w-full mt-24 p-4 lg:p-0">
@@ -10,11 +10,12 @@ const PostItem = ({ title, content, authorFirstName, authorLastName, category, i
         </h1>
         <div class="flex justify-between items-center mt-4">
           <div className="flex items-center">
-            <img
+            <GatsbyImage image={authorAvatar} alt="avatar" className="mx-2 my-5 w-8 h-8 object-cover rounded-full hidden sm:block"/>
+            {/* <img
               src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=373&q=80"
               alt="avatar"
               className="mx-2 my-5 w-8 h-8 object-cover rounded-full hidden sm:block"
-            />
+            /> */}
             <span className="text-sm text-yellow-600">{authorFirstName + ' ' + authorLastName}</span>
             <span className="mx-2">|</span>
             <span className="text-sm text-gray-400">April 23, 2021</span>

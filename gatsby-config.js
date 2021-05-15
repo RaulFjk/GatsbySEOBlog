@@ -49,7 +49,8 @@ module.exports = {
             collection: 'user',
             map: doc => ({
               firstName: doc.firstName,
-              lastName:  doc.lastName
+              lastName:  doc.lastName,
+              avatar: doc.avatar
             })
           }
         ]
@@ -82,6 +83,13 @@ module.exports = {
       options: {
         nodeType: 'Article',
         imagePath: 'imageUrl',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: 'Author',
+        imagePath: 'avatar',
       },
     },
     `gatsby-plugin-gatsby-cloud`,

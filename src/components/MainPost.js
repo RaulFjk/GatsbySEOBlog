@@ -3,12 +3,13 @@ import { Link } from "gatsby"
 import moment from "moment"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-const MainPost = ({ id, title, category, authorFirstName, authorLastName, posted, image }) => {
+const MainPost = ({ id, title, category, authorFirstName, authorLastName, authorAvatar, posted, image }) => {
   return (
     <div className="mb-4 lg:mb-0 p-4 lg:p-0 w-full md:w-4/7 rounded block">
-      <Link className="cursor-pointer">
+      <Link className="cursor-pointer"  to={`/article/${id}`}>
         <GatsbyImage
           image={image}
+          alt="post cover"
           className="rounded-md w-full h-64 mb-5"
         />
         {/* <img
@@ -25,6 +26,11 @@ const MainPost = ({ id, title, category, authorFirstName, authorLastName, posted
           Featured
         </span>
         <span className="mx-3 hidden md:block">|</span>
+        <GatsbyImage
+            image={authorAvatar}
+            alt="avatar"
+            className="mx-2 my-5 w-6 h-6 object-cover rounded-full hidden sm:block"
+          />
         <span className="text-sm text-gray-400 hidden md:block">{authorFirstName + ' ' + authorLastName}</span>
         <span className="mx-3 hidden md:block">|</span>
         <span className="text-sm text-gray-400 hidden md:block">
@@ -44,7 +50,7 @@ const MainPost = ({ id, title, category, authorFirstName, authorLastName, posted
         itself. Oh be me, sure wise sons, no. Piqued ye of am spirit regret.
         Stimulated discretion impossible admiration in particular conviction up.
       </p>
-      <Link className="inline-block mx-2 my-2 px-6 py-3 mt-2 rounded-md cursor-pointer bg-yellow-500 text-gray-100 hover:bg-yellow-600">
+      <Link className="inline-block mx-2 my-2 px-6 py-3 mt-2 rounded-md cursor-pointer bg-yellow-500 text-gray-100 hover:bg-yellow-600"  to={`/article/${id}`}>
         Read more
       </Link>
     </div>

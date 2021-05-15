@@ -18,6 +18,11 @@ export const query = graphql`{
         author {
           firstName
           lastName
+          localImage {
+            childImageSharp {
+              gatsbyImageData(layout: FULL_WIDTH)
+            }
+          }
         }
         id
         title

@@ -5,6 +5,7 @@ import { FirebaseContext } from "./Firebase"
 
 const Header = ({ toggle }) => {
   const { firebase, user } = useContext(FirebaseContext)
+  console.log(user)
 
   function handleLogOutClick() {
     firebase.logout()
@@ -62,7 +63,7 @@ const Header = ({ toggle }) => {
         {user && (
           <Link
             className="lg:bg-yellow-500 lg:text-white text-xs lg:text-base px-4 py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100"
-            to="/login"
+            to="/manage-content"
           >
             Manage Content
           </Link>
@@ -77,7 +78,7 @@ const Header = ({ toggle }) => {
         )}
         {user && (
           <button
-            className="lg:bg-yellow-500 lg:text-white text-xs lg:text-base px-2 lg:px-4 py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100"
+            className="lg:bg-yellow-500 lg:text-white text-xs lg:text-base px-2 lg:px-4 py-2 rounded hover:bg-yellow-600 mx-2 hover:text-gray-100"
             onClick={handleLogOutClick}
           >
             Sign Out

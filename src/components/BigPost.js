@@ -8,6 +8,7 @@ const BigPost = ({
   title,
   authorFirstName,
   authorLastName,
+  authorAvatar,
   content,
   category,
   posted,
@@ -24,11 +25,13 @@ const BigPost = ({
         {image ? (
           <GatsbyImage
             image={image}
+            alt="post cover"
             className="block lg:block z-0 rounded-md md:h-full md:w-72"
           />
         ) : (
           <img
             src={imageUrl}
+            alt="post cover"
             className="block lg:block rounded-md w-full h-64 md:h-full lg:w-72 px-4 md:px-0 md:m-0"
           />
         )}
@@ -45,8 +48,13 @@ const BigPost = ({
             {capitalizeFirstLetter(category)}
           </span>
           <span className="mx-3 hidden md:block">|</span>
+          <GatsbyImage
+            image={authorAvatar}
+            alt="avatar"
+            className="mx-2 my-5 w-6 h-6 object-cover rounded-full hidden sm:block"
+          />
           <span className="text-sm text-gray-400 hidden md:block">
-            {authorFirstName + ' ' + authorLastName}
+            {authorFirstName + " " + authorLastName}
           </span>
           <span className="mx-3 hidden md:block">|</span>
           <span className="text-sm text-gray-400 hidden md:block">

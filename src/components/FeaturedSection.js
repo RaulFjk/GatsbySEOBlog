@@ -15,6 +15,11 @@ const FeaturedSection = props => {
             author {
               firstName
               lastName
+              localImage {
+                childImageSharp {
+                  gatsbyImageData(layout: FULL_WIDTH)
+                }
+              }
             }
             id
             title
@@ -45,13 +50,15 @@ const FeaturedSection = props => {
         category={category}
         authorFirstName={mainPost.node.author.firstName}
         authorLastName={mainPost.node.author.lastName}
+        authorAvatar={mainPost.node.author.localImage.childImageSharp.gatsbyImageData}
         posted={mainPost.node.posted}
         image={mainPost.node.localImage.childImageSharp.gatsbyImageData}
       />
-      <div class="w-full md:w-4/7">
+      <div className="w-full md:w-4/7">
         {filteredList.map(e => (
           <SmallPost
             id={e.node.id}
+            key={e.node.id}
             title={e.node.title}
             category={capitalizeFirstLetter(e.node.category)}
             image={e.node.localImage.childImageSharp.gatsbyImageData}
