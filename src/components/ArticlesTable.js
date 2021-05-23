@@ -95,12 +95,14 @@ const ArticlesTable = ({ category, firebase }) => {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <div
-                            className="flex flex-wrap 
+                            className="flex 
                                 justify-end mt-4 mx-4 pt-4 border-t 
                                 border-gray-300 border-solid
                                 sm:ml-10 sm:border-0 sm:pt-0 sm:mt-0"
                           >
-                            <button className="flex items-center bg-green-900 text-white pl-2 pr-5 py-2 rounded  hover:bg-blue-500 mx-2 hover:text-gray-100">
+                            <Link 
+                            className="flex items-center bg-green-900 text-white pl-2 pr-5 py-2 rounded  hover:bg-blue-500 mx-2 hover:text-gray-100"
+                            to={`/article/edit/${article.id}`}>
                               <svg
                                 className="w-6 h-6"
                                 fill="none"
@@ -116,7 +118,7 @@ const ArticlesTable = ({ category, firebase }) => {
                                 />
                               </svg>
                               <span className="ml-2">Edit</span>
-                            </button>
+                            </Link>
                             <button className="inline-block p-3 ml-3 text-center text-white transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-gray-200 focus:outline-none">
                               <svg
                                 className="w-5 h-5 text-white"

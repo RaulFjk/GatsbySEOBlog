@@ -61,6 +61,18 @@ class Firebase {
     })
   }
 
+  async updateArticle({ title, content, categoryName, articleCover, featured, articleId }) {
+    const updateArticleCallable = this.functions.httpsCallable("updateArticle")
+    return updateArticleCallable({
+      title,
+      content,
+      categoryName,
+      articleCover,
+      featured,
+      articleId
+    })
+  }
+
   async createAuthor({ authorName }) {
     const createAuthorCallable = this.functions.httpsCallable("createAuthor")
     return createAuthorCallable({
