@@ -4,7 +4,7 @@ import ArticlesTable from "../components/ArticlesTable"
 import { FirebaseContext } from "../components/Firebase"
 
 const ManageContent = () => {
-  const { firebase } = useContext(FirebaseContext)
+  const { firebase, user } = useContext(FirebaseContext)
   const [filter, setFilter] = useState("")
   const [categories, setCategories] = useState([])
   const [categoryName, setCategoryName] = useState("")
@@ -29,6 +29,10 @@ const ManageContent = () => {
       })
     }
   }, [firebase])
+
+  if(!user){
+    return null
+  }
 
   return (
     <div className="mt-24 flex-1 max-h-full mx-44 p-5 overflow-hidden">

@@ -101,7 +101,7 @@ const ArticlesTable = ({ category, firebase }) => {
                                 sm:ml-10 sm:border-0 sm:pt-0 sm:mt-0"
                           >
                             <Link 
-                            className="flex items-center bg-green-900 text-white pl-2 pr-5 py-2 rounded  hover:bg-blue-500 mx-2 hover:text-gray-100"
+                            className="flex items-center bg-gray-700  text-white pl-2 pr-5 py-2 rounded  hover:bg-blue-500 mx-2 hover:text-gray-100"
                             to={`/article/edit/${article.id}`}>
                               <svg
                                 className="w-6 h-6"

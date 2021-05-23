@@ -11,7 +11,7 @@ if (typeof window !== "undefined") {
 }
 
 const EditPostTemplate = props => {
-  const { firebase } = useContext(FirebaseContext)
+  const { firebase, user } = useContext(FirebaseContext)
   const [featured, setFeatured] = useState(props.data.article.featured)
   const [title, setTitle] = useState(props.data.article.title)
   const [content, setContent] = useState(props.data.article.content)
@@ -62,6 +62,11 @@ const EditPostTemplate = props => {
       .then(() => navigate("/manage-content"))
   }
 
+  if(!user){
+    return null
+  }
+
+
   return (
     <div className="py-12 mt-8">
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -103,7 +108,6 @@ const EditPostTemplate = props => {
                   onChange={e => {
                     e.persist()
                     setTitle(e.target.value)
-                    console.log(title)
                   }}
                   required
                 ></input>
@@ -118,7 +122,6 @@ const EditPostTemplate = props => {
                   e.persist()
                   fileReader.readAsDataURL(e.target.files[0])
                   setNewCoverUrl(URL.createObjectURL(e.target.files[0]))
-                  console.log(articleCover)
                 }}
                 className="block rounded-lg w-full mt-1 px-1 text-gray-700 appearance-none mb-4 focus:outline-none focus:bg-gray-300 focus:shadow-inner"
               />
@@ -131,7 +134,6 @@ const EditPostTemplate = props => {
                   onChange={e => {
                     e.persist()
                     setCategoryName(e.target.value)
-                    console.log(categoryName)
                   }}
                 >
                   {categories.map(category => {
@@ -157,7 +159,6 @@ const EditPostTemplate = props => {
                   onChange={e => {
                     e.persist()
                     setContent(e.target.value)
-                    console.log(content)
                   }}
                 />
               </div>
@@ -180,8 +181,6 @@ const EditPostTemplate = props => {
                         } else {
                           setFeatured(true)
                         }
-
-                        console.log(featured)
                       }}
                       className="opacity-0 absolute"
                     />

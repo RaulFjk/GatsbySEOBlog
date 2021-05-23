@@ -5,7 +5,7 @@ import { FirebaseContext } from "./Firebase"
 
 const Header = ({ toggle }) => {
   const { firebase, user } = useContext(FirebaseContext)
-  console.log(user)
+
 
   function handleLogOutClick() {
     firebase.logout()
@@ -35,7 +35,7 @@ const Header = ({ toggle }) => {
           />
         </svg>
       </div>
-      <div className="pr-8 text-xs lg:text-base md:block hidden">
+      <div className="pr-8 text-xs lg:text-base md:flex hidden items-center">
         <Link className="p-4 hover:underline hover:text-yellow-500 " to="/">
           Home
         </Link>
@@ -45,7 +45,10 @@ const Header = ({ toggle }) => {
         >
           Exclusives
         </Link>
-        <Link className="p-4 text-xs lg:text-base hover:underline hover:text-yellow-500" to="/nft">
+        <Link
+          className="p-4 text-xs lg:text-base hover:underline hover:text-yellow-500"
+          to="/nft"
+        >
           NFT
         </Link>
         <Link
@@ -62,7 +65,7 @@ const Header = ({ toggle }) => {
         </Link>
         {user && (
           <Link
-            className="lg:bg-yellow-500 lg:text-white text-xs lg:text-base px-4 py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100"
+            className="lg:bg-yellow-500 lg:text-white text-xs p-3 lg:text-base lg:px-4 lg:py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100"
             to="/manage-content"
           >
             Manage Content
@@ -83,6 +86,11 @@ const Header = ({ toggle }) => {
           >
             Sign Out
           </button>
+        )}
+        {user && (
+          <div className="rounded-full text-lg bg-gradient-to-r from-yellow-300 to-yellow-700 ... p-2 mr-4 ml-2 text-center cursor-pointer focus:outline-none h-11 w-11">
+            <span>RD</span>
+          </div>
         )}
       </div>
     </nav>

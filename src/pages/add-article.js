@@ -8,7 +8,7 @@ if (typeof window !== "undefined") {
 }
 
 const AddArticle = () => {
-  const { firebase } = useContext(FirebaseContext)
+  const { firebase, user } = useContext(FirebaseContext)
   const [featured, setFeatured] = useState(false)
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
@@ -45,11 +45,6 @@ const AddArticle = () => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(title)
-    console.log(content)
-    console.log(categoryName)
-    console.log(articleCover)
-    console.log(featured)
     firebase.createArticle({
       title,
       content,
@@ -57,6 +52,10 @@ const AddArticle = () => {
       articleCover,
       featured,
     })
+  }
+
+  if(!user){
+    return null
   }
 
   return (
@@ -78,7 +77,7 @@ const AddArticle = () => {
                   onChange={e => {
                     e.persist()
                     setTitle(e.target.value)
-                    console.log(title)
+                
                   }}
                   required
                 ></input>
@@ -92,7 +91,6 @@ const AddArticle = () => {
                 onChange={e => {
                   e.persist()
                   fileReader.readAsDataURL(e.target.files[0])
-                  console.log(articleCover)
                 }}
                 className="block rounded-lg w-full mt-1 px-1 text-gray-700 appearance-none mb-4 focus:outline-none focus:bg-gray-300 focus:shadow-inner"
               />
@@ -105,7 +103,6 @@ const AddArticle = () => {
                   onChange={e => {
                     e.persist()
                     setCategoryName(e.target.value)
-                    console.log(categoryName)
                   }}
                 >
                   {categories.map(category => (
@@ -125,7 +122,7 @@ const AddArticle = () => {
                   onChange={e => {
                     e.persist()
                     setContent(e.target.value)
-                    console.log(content)
+
                   }}
                 />
               </div>
@@ -148,8 +145,6 @@ const AddArticle = () => {
                         } else {
                           setFeatured(true)
                         }
-
-                        console.log(featured)
                       }}
                       className="opacity-0 absolute"
                     />
