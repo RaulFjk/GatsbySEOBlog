@@ -36,6 +36,10 @@ class Firebase {
     return this.db.collection("authors").get()
   }
 
+  async deleteArticle(articleId) {
+    return this.db.collection("articles").doc(articleId).delete()
+  }
+
   async getCategories() {
     return this.db.collection("categories").get()
   }

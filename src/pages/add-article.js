@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { FirebaseContext } from "../components/Firebase"
+import { navigate } from "gatsby"
 
 let fileReader
 
@@ -51,7 +52,7 @@ const AddArticle = () => {
       categoryName,
       articleCover,
       featured,
-    })
+    }).then(() => navigate("/manage-content"))
   }
 
   if(!user){

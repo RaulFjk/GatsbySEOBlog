@@ -63,7 +63,7 @@ const ArticlesTable = ({ category, firebase }) => {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {articles.length > 0 &&
                     articles.map(article => (
-                      <tr className="hover:bg-gray-100">
+                      <tr className="hover:bg-gray-100" key={article.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex px-4 items-center">
                             {/* <div className="flex-shrink-0 h-10 w-10">
@@ -100,9 +100,10 @@ const ArticlesTable = ({ category, firebase }) => {
                                 border-gray-300 border-solid
                                 sm:ml-10 sm:border-0 sm:pt-0 sm:mt-0"
                           >
-                            <Link 
-                            className="flex items-center bg-gray-700  text-white pl-2 pr-5 py-2 rounded  hover:bg-blue-500 mx-2 hover:text-gray-100"
-                            to={`/article/edit/${article.id}`}>
+                            <Link
+                              className="flex items-center bg-gray-700  text-white pl-2 pr-5 py-2 rounded  hover:bg-blue-500 mx-2 hover:text-gray-100"
+                              to={`/article/edit/${article.id}`}
+                            >
                               <svg
                                 className="w-6 h-6"
                                 fill="none"
@@ -119,7 +120,11 @@ const ArticlesTable = ({ category, firebase }) => {
                               </svg>
                               <span className="ml-2">Edit</span>
                             </Link>
-                            <button className="inline-block p-3 ml-3 text-center text-white transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-gray-200 focus:outline-none">
+                            <button 
+                            className="inline-block p-3 ml-3 text-center text-white transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-gray-200 focus:outline-none"
+                            onClick={() => {
+                              firebase.deleteArticle(article.id)
+                            }}>
                               <svg
                                 className="w-5 h-5 text-white"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -127,9 +132,9 @@ const ArticlesTable = ({ category, firebase }) => {
                                 fill="currentColor"
                               >
                                 <path
-                                  fill-rule="evenodd"
+                                  fillRule="evenodd"
                                   d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                  clip-rule="evenodd"
+                                  clipRule="evenodd"
                                 />
                               </svg>
                             </button>

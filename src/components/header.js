@@ -1,11 +1,11 @@
 import React, { useContext } from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { FirebaseContext } from "./Firebase"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Header = ({ toggle }) => {
   const { firebase, user } = useContext(FirebaseContext)
-
 
   function handleLogOutClick() {
     firebase.logout()
@@ -16,9 +16,17 @@ const Header = ({ toggle }) => {
      shadow-lg font-mono z-20"
       role="navigation"
     >
-      <Link to="/" className="pl-8">
-        Krypto Life
-      </Link>
+      <div className="flex items-center">
+        <StaticImage
+          className="hidden lg:inline w-16 h-16"
+          src="../images/krypto-life-logo.png"
+          alt="logo"
+          placeholder="blurred"
+        />
+        <Link to="/" className="ml-2">
+          Krypto Life
+        </Link>
+      </div>
       <div className="px-4 cursor-pointer md:hidden" onClick={toggle}>
         <svg
           className="w-6 h-6"
@@ -88,7 +96,7 @@ const Header = ({ toggle }) => {
           </button>
         )}
         {user && (
-          <div className="rounded-full text-lg bg-gradient-to-r from-yellow-300 to-yellow-700 ... p-2 mr-4 ml-2 text-center cursor-pointer focus:outline-none h-11 w-11">
+          <div className="rounded-full text-lg bg-gradient-to-r hidden lg:inline from-yellow-300 to-yellow-700 ... p-2 mr-4 ml-2 text-center cursor-pointer focus:outline-none h-11 w-11">
             <span>RD</span>
           </div>
         )}

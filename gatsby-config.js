@@ -41,7 +41,8 @@ module.exports = {
               author___NODE: doc.author.id,
               posted: doc.posted.toDate(),
               featured: doc.featured,
-              imageUrl: doc.imageUrl
+              imageUrl: doc.imageUrl,
+              author: doc.author
             })
           },
           {
@@ -50,7 +51,9 @@ module.exports = {
             map: doc => ({
               firstName: doc.firstName,
               lastName:  doc.lastName,
-              avatar: doc.avatar
+              avatar: doc.avatar,
+              about: doc.about,
+              occupation: doc.occupation
             })
           }
         ]
@@ -75,7 +78,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/krypto-life-icon.png`, // This path is relative to the root of the site.
       },
     },
     {
