@@ -14,6 +14,7 @@ const IndexPage = () => {
        */}
       <Helmet>
         <html lang="en" />
+        <title>Google</title>
         <meta
           name="google-site-verification"
           content="96Jn-meJ8QUTjUvtxgo9HoyP7iPLjlKKipVvRFAv_D4"
