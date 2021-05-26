@@ -16,6 +16,7 @@ const IndexPage = () => {
         <meta
           name="google-site-verification"
           content="96Jn-meJ8QUTjUvtxgo9HoyP7iPLjlKKipVvRFAv_D4"
+          data-react-helmet="true"
         />
       </Helmet>
       <HomePageTemplate />
