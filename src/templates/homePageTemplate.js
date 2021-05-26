@@ -9,11 +9,11 @@ const HomePageTemplate = () => {
   const { firebase } = useContext(FirebaseContext)
 
   return (
-    <div className="max-w-screen-lg mx-auto">
+    <section className="App max-w-screen-lg mx-auto">
       <FeaturedSection />
       <div className="w-full border-b-2 border-gray-100 mt-10" />
       {!!firebase && <LatestNewsSection firebase={firebase} />}
-    </div>
+    </section>
   )
 }
 
