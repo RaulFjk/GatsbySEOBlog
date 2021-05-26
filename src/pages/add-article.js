@@ -16,10 +16,33 @@ const AddArticle = () => {
   const [articleCover, setArticleCover] = useState("")
   const [categories, setCategories] = useState([])
   const [categoryName, setCategoryName] = useState("")
+  const [uid, setUserId] = useState("")
+  const [author, setAuthor] = useState("")
+  const [added, setAdded] = useState(false)
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
+
+  useEffect(() => {
+    if (user) {
+      setUserId(user.uid)
+    }
+  }, [user])
+
+  useEffect(() => {
+    if (uid) {
+      firebase.getAdminProfile({
+        uid,
+        onSnapshot: r => {
+          setAuthor({
+            id: r.docs[0].id,
+            ...r.docs[0].data(),
+          })
+        },
+      })
+    }
+  }, [uid])
 
   useEffect(() => {
     fileReader.addEventListener("load", () => {
@@ -46,16 +69,25 @@ const AddArticle = () => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    firebase.createArticle({
-      title,
-      content,
-      categoryName,
-      articleCover,
-      featured,
-    }).then(() => navigate("/manage-content"))
+    firebase
+      .createArticle({
+        title,
+        content,
+        categoryName,
+        articleCover,
+        featured,
+        author,
+      })
+      .then(
+        setAdded(true),
+        setTimeout(() => {
+          setAdded(false)
+          navigate("/manage-content")
+        }, 2000)
+      ).catch(err => alert("Something went wrong! Try again"))
   }
 
-  if(!user){
+  if (!user) {
     return null
   }
 
@@ -78,7 +110,6 @@ const AddArticle = () => {
                   onChange={e => {
                     e.persist()
                     setTitle(e.target.value)
-                
                   }}
                   required
                 ></input>
@@ -123,7 +154,6 @@ const AddArticle = () => {
                   onChange={e => {
                     e.persist()
                     setContent(e.target.value)
-
                   }}
                 />
               </div>
@@ -162,6 +192,11 @@ const AddArticle = () => {
                 </label>
               </div>
             </form>
+            {added && (
+              <div className="my-5 mx-auto w-56 bg-green-300 shadow-lg p-5 text-red-700 font-mono">
+                Article created!
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -7,12 +7,14 @@ const SmallPost = ({ id, title, category, image }) => {
   return (
     <div className="w-full md:w-4/7">
       <div className="rounded border-b-2 border-gray-50 w-full flex flex-col md:flex-row mb-10 p-4 lg:p-0">
-        <div>
-          <GatsbyImage
-            image={image}
-            alt="post cover"
-            className="md:hidden lg:block rounded-md w-full h-64 md:w-44 md:h-32 md:m-0"
-          />{" "}
+        <div className="cursor-pointer">
+          <Link to={`/article/${id}`}>
+            <GatsbyImage
+              image={image}
+              alt="post cover"
+              className="md:hidden lg:block rounded-md w-full h-64 md:w-44 md:h-32 md:m-0"
+            />
+          </Link>
         </div>
         {/* <img
           src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"

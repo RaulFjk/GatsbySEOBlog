@@ -82,6 +82,9 @@ const LatestNewsSection = ({ firebase }) => {
               category={article.category}
               posted={article.posted.toDate()}
               imageUrl={article.imageUrl}
+              authorFirstName={article.author.firstName}
+              authorLastName={article.author.lastName}
+              authorAvatar={article.author.avatar}
             />
           ))}
       </div>

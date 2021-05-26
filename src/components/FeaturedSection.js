@@ -15,6 +15,7 @@ const FeaturedSection = props => {
             author {
               firstName
               lastName
+              avatar
               localImage {
                 childImageSharp {
                   gatsbyImageData(layout: FULL_WIDTH)
@@ -50,7 +51,7 @@ const FeaturedSection = props => {
         category={category}
         authorFirstName={mainPost.node.author.firstName}
         authorLastName={mainPost.node.author.lastName}
-        authorAvatar={mainPost.node.author.localImage.childImageSharp.gatsbyImageData}
+        authorAvatar={mainPost.node.author.avatar}
         posted={mainPost.node.posted}
         image={mainPost.node.localImage.childImageSharp.gatsbyImageData}
       />

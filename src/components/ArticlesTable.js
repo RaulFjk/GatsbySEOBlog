@@ -4,6 +4,7 @@ import moment from "moment"
 
 const ArticlesTable = ({ category, firebase }) => {
   const [articles, setArticles] = useState([])
+  const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
     firebase.filterArticlesByCategory({
@@ -27,6 +28,11 @@ const ArticlesTable = ({ category, firebase }) => {
       <div className="flex flex-col mt-3">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            {deleted && (
+              <div className="my-5 w-56 bg-green-300 shadow-lg p-5 text-red-700 font-mono">
+                Article deleted!
+              </div>
+            )}
             <div className="shadow  border-b border-gray-200 sm:rounded-lg">
               <table className="min-w-full divide-y  divide-gray-200">
                 <thead className="bg-gray-50">
@@ -120,11 +126,17 @@ const ArticlesTable = ({ category, firebase }) => {
                               </svg>
                               <span className="ml-2">Edit</span>
                             </Link>
-                            <button 
-                            className="inline-block p-3 ml-3 text-center text-white transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-gray-200 focus:outline-none"
-                            onClick={() => {
-                              firebase.deleteArticle(article.id)
-                            }}>
+                            <button
+                              className="inline-block p-3 ml-3 text-center text-white transition bg-yellow-500 rounded-full shadow ripple hover:shadow-lg hover:bg-gray-200 focus:outline-none"
+                              onClick={() => {
+                                firebase.deleteArticle(article.id).then(
+                                  setDeleted(true),
+                                  setTimeout(() => {
+                                    setDeleted(false)
+                                  }, 2000)
+                                )
+                              }}
+                            >
                               <svg
                                 className="w-5 h-5 text-white"
                                 xmlns="http://www.w3.org/2000/svg"

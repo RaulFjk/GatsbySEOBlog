@@ -13,7 +13,7 @@ const PostSection = ({ articles }) => {
             title={edge.node.title}
             authorFirstName={edge.node.author.firstName}
             authorLastName={edge.node.author.lastName}
-            authorAvatar={edge.node.author.localImage.childImageSharp.gatsbyImageData}
+            authorAvatar={edge.node.author.avatar}
             content={edge.node.content}
             category={edge.node.category}
             posted={edge.node.posted}

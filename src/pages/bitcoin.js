@@ -19,6 +19,7 @@ export const query = graphql`
         author {
           firstName
           lastName
+          avatar
           localImage {
             childImageSharp {
               gatsbyImageData(layout: FULL_WIDTH)

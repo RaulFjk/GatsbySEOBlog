@@ -25,6 +25,14 @@ class Firebase {
       .onSnapshot(onSnapshot)
   }
 
+  getAdminProfile({ uid, onSnapshot }) {
+    return this.db
+      .collection("user")
+      .where("uid", "==", uid)
+      .limit(1)
+      .onSnapshot(onSnapshot);
+  }
+
   filterArticlesByCategory({ category, onSnapshot }) {
     return this.db
       .collection("articles")
@@ -54,7 +62,7 @@ class Firebase {
     })
   }
 
-  async createArticle({ title, content, categoryName, articleCover, featured }) {
+  async createArticle({ title, content, categoryName, articleCover, featured, author }) {
     const createArticleCallable = this.functions.httpsCallable("createArticle")
     return createArticleCallable({
       title,
@@ -62,6 +70,7 @@ class Firebase {
       categoryName,
       articleCover,
       featured,
+      author
     })
   }
 
