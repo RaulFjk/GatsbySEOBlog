@@ -10,14 +10,6 @@ import PostTemplate from "../templates/postTemplate"
 const IndexPage = () => {
   return (
     <section>
-      <Helmet>
-        <html lang="en" />
-        <meta
-          name="google-site-verification"
-          content="96Jn-meJ8QUTjUvtxgo9HoyP7iPLjlKKipVvRFAv_D4"
-        />
-        <title>Google</title>
-      </Helmet>
       <HomePageTemplate />
       {/* <PostTemplate /> */}
     </section>
