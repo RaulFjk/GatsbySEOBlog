@@ -8,7 +8,7 @@ const SmallPost = ({ id, title, category, image }) => {
     <div className="w-full md:w-4/7">
       <div className="rounded border-b-2 border-gray-50 w-full flex flex-col md:flex-row mb-10 p-4 lg:p-0">
         <div className="cursor-pointer">
-          <Link to={`/article/${id}`}>
+          <Link to={`/article/${id}`} aria-current="location">
             <GatsbyImage
               image={image}
               alt="post cover"
@@ -22,11 +22,11 @@ const SmallPost = ({ id, title, category, image }) => {
         /> */}
         <div className="bg-white rounded px-4 md:w-2/3">
           <div className="flex items-center">
-            <span className="text-yellow-600 text-sm hidden md:block">
+            <span className="text-yellow-700 text-sm hidden md:block">
               {category}
             </span>
             <span className="mx-3 hidden md:block">|</span>
-            <span className="text-gray-600 text-xs hidden md:block bg-yellow-500 p-1 rounded">
+            <span className="text-gray-900 text-xs hidden md:block bg-yellow-500 p-1 rounded">
               Featured
             </span>
           </div>
@@ -34,6 +34,7 @@ const SmallPost = ({ id, title, category, image }) => {
             <Link
               className="md:mt-0 line-clamp-3 text-gray-800 font-semibold text-xl cursor-pointer hover:text-yellow-500"
               to={`/article/${id}`}
+              aria-current="location"
             >
               {title}
             </Link>

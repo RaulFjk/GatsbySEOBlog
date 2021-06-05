@@ -23,7 +23,7 @@ const BigPost = ({
     <div className="rounded w-full p-4 lg:p-0 border-b-2 border-gray-50 flex flex-col md:flex-row mb-10">
       <div className="cursor-pointer md:w-1/3">
         {image ? (
-          <Link  to={`/article/${id}`}>
+          <Link  to={`/article/${id}`} aria-current="location">
             <GatsbyImage
               image={image}
               alt="post cover"
@@ -31,7 +31,7 @@ const BigPost = ({
             />{" "}
           </Link>
         ) : (
-          <Link  to={`/article/${id}`}>
+          <Link  to={`/article/${id}`} aria-current="location">
             <img
               src={imageUrl}
               alt="post cover"
@@ -44,11 +44,12 @@ const BigPost = ({
         <Link
           to={`/article/${id}`}
           className="md:mt-0 text-gray-800 font-semibold text-xl mb-1 hover:text-yellow-500"
+          aria-current="location"
         >
           {title}
         </Link>
         <div className="flex items-center mt-1">
-          <span className="text-yellow-600 text-base hidden md:block">
+          <span className="text-yellow-700 text-base hidden md:block">
             {capitalizeFirstLetter(category)}
           </span>
           <span className="mx-3 hidden md:block">|</span>
@@ -57,11 +58,11 @@ const BigPost = ({
             alt="avatar"
             className="mx-2 my-5 w-6 h-6 object-cover rounded-full hidden sm:block"
           />
-          <span className="text-sm text-gray-400 hidden md:block">
+          <span className="text-sm text-gray-700 hidden md:block">
             {authorFirstName + " " + authorLastName}
           </span>
           <span className="mx-3 hidden md:block">|</span>
-          <span className="text-sm text-gray-400 hidden md:block">
+          <span className="text-sm text-gray-700 hidden md:block">
             {moment(posted).format("HH:mm Do MMM YYYY")}
           </span>
         </div>
