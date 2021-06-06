@@ -9,8 +9,9 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { data } from "autoprefixer"
 
-function Seo({ description, lang, meta, title }) {
+function Seo({ description, lang, title, author, keywords, image }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,7 +27,12 @@ function Seo({ description, lang, meta, title }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaTitle = title || site.siteMetadata.title
+  const defaultTitle = "Krypto Life"
+  const metaAuthor = author || site.siteMetadata.author
+  const metaImage  = image || site.siteMetadata.image
+  const metaKeywords = keywords || ["krypto blog", "krypto life"]
+
 
   return (
     <Helmet
@@ -54,21 +60,30 @@ function Seo({ description, lang, meta, title }) {
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          content: metaAuthor,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+        {
+          name: `twitter:image`,
+          content: metaImage,
+        },
+      ].concat(
+        metaKeywords && metaKeywords.length > 0 ? {
+          name: `keywords`,
+          content: metaKeywords.join(`, `),
+        } : []
+      )}
     />
   )
 }

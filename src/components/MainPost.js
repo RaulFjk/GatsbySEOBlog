@@ -63,7 +63,7 @@ const MainPost = ({
         Stimulated discretion impossible admiration in particular conviction up.
       </p>
       <Link
-        className="inline-block mx-2 my-2 px-6 py-3 mt-2 rounded-md cursor-pointer bg-yellow-500 text-gray-100 hover:bg-yellow-600"
+        className="inline-block mx-2 my-2 px-6 py-3 mt-2 rounded-md cursor-pointer bg-yellow-500 text-gray-900 hover:bg-yellow-600"
         to={`/article/${id}`}
         aria-current="location"
       >

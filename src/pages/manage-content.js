@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react"
 import { Link } from "gatsby"
 import ArticlesTable from "../components/ArticlesTable"
 import { FirebaseContext } from "../components/Firebase"
+import Seo from "../components/seo"
 
 const ManageContent = () => {
   const { firebase, user } = useContext(FirebaseContext)
@@ -30,12 +31,13 @@ const ManageContent = () => {
     }
   }, [firebase])
 
-  if(!user){
+  if (!user) {
     return null
   }
 
   return (
     <div className="mt-24 flex-1 max-h-full mx-44 p-5 overflow-hidden">
+      <Seo title="Manage Content" />
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <div className="mr-3 mt-2 p-3">
@@ -77,7 +79,9 @@ const ManageContent = () => {
           <span>New Article</span>
         </Link>
       </div>
-      {categories.length > 0 && <ArticlesTable category={categoryName} firebase={firebase}/>}
+      {categories.length > 0 && (
+        <ArticlesTable category={categoryName} firebase={firebase} />
+      )}
     </div>
   )
 }

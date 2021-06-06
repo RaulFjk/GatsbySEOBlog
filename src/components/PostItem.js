@@ -1,14 +1,15 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
+import moment from "moment"
 
-const PostItem = ({ title, content, authorFirstName, authorLastName, category, image, authorAvatar }) => {
+const PostItem = ({ title, content, authorFirstName, authorLastName, posted, category, image, authorAvatar }) => {
   return (
     <section>
       <div className="mb-4 md:mb-0 w-full mt-24 p-4 lg:p-0">
         <h1 className="text-3xl font-semibold text-gray-800 leading-tight">
           {title}
         </h1>
-        <div class="flex justify-between items-center mt-4">
+        <div className="flex justify-between items-center mt-4">
           <div className="flex items-center">
             <GatsbyImage image={authorAvatar} alt="avatar" className="mx-2 my-5 w-8 h-8 object-cover rounded-full hidden sm:block"/>
             {/* <img
@@ -18,7 +19,7 @@ const PostItem = ({ title, content, authorFirstName, authorLastName, category, i
             /> */}
             <span className="text-sm text-yellow-600">{authorFirstName + ' ' + authorLastName}</span>
             <span className="mx-2">|</span>
-            <span className="text-sm text-gray-400">April 23, 2021</span>
+            <span className="text-sm text-gray-400">{moment(posted).format("HH:mm Do MMM YYYY")}</span>
           </div>
         </div>
         <div className="mx-auto">

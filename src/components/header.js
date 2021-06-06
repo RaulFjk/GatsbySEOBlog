@@ -73,7 +73,7 @@ const Header = ({ toggle }) => {
         </Link>
         {user && (
           <Link
-            className="lg:bg-yellow-500 lg:text-white text-xs p-3 lg:text-base lg:px-4 lg:py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100"
+            className="lg:bg-yellow-500 lg:text-gray-900 text-xs p-3 lg:text-base lg:px-4 lg:py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100"
             to="/manage-content"
           >
             Manage Content
@@ -81,7 +81,7 @@ const Header = ({ toggle }) => {
         )}
         {!user && (
           <Link
-            className="lg:bg-yellow-500 lg:text-white text-xs p-3 lg:text-base lg:px-4 lg:py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100"
+            className="lg:bg-yellow-500 lg:text-gray-900  text-xs p-3 lg:text-base lg:px-4 lg:py-2 rounded  hover:bg-yellow-600 mx-2 hover:text-gray-100"
             to="/login"
           >
             Sign In
@@ -89,7 +89,7 @@ const Header = ({ toggle }) => {
         )}
         {user && (
           <button
-            className="lg:bg-yellow-500 lg:text-white text-xs lg:text-base px-2 lg:px-4 py-2 rounded hover:bg-yellow-600 mx-2 hover:text-gray-100"
+            className="lg:bg-yellow-500 lg:text-gray-900  text-xs lg:text-base px-2 lg:px-4 py-2 rounded hover:bg-yellow-600 mx-2 hover:text-gray-100"
             onClick={handleLogOutClick}
           >
             Sign Out
