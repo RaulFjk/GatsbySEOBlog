@@ -11,15 +11,17 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { data } from "autoprefixer"
 
-function Seo({ description, lang, title, author, keywords, image }) {
+function Seo({ description, url, lang, title, author, keywords, image, twitterUsername }) {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
             title
+            url
             description
             image
+            twitterUsername
             author
           }
         }
@@ -29,6 +31,7 @@ function Seo({ description, lang, title, author, keywords, image }) {
 
   const metaDescription = description || site.siteMetadata.description
   const metaTitle = title || site.siteMetadata.title
+  const metaUrl = url || site.siteMetadata.url
   const defaultTitle = "Krypto Life"
   const metaAuthor = author || site.siteMetadata.author
   const metaImage  = image || site.siteMetadata.image
@@ -50,6 +53,10 @@ function Seo({ description, lang, title, author, keywords, image }) {
         {
           property: `og:title`,
           content: title,
+        },
+        {
+          property: `og:url`,
+          content: metaUrl,
         },
         {
           property: `og:description`,
@@ -74,10 +81,6 @@ function Seo({ description, lang, title, author, keywords, image }) {
         {
           name: `twitter:description`,
           content: metaDescription,
-        },
-        {
-          name: `twitter:image`,
-          content: metaImage,
         },
       ].concat(
         metaKeywords && metaKeywords.length > 0 ? {
