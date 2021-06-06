@@ -1,10 +1,8 @@
 import React, { useContext } from "react"
-import { Link } from "gatsby"
 import FeaturedSection from "../components/FeaturedSection"
 import LatestNewsSection from "../components/LatestNewsSection"
 import { FirebaseContext } from "../components/Firebase"
-import { Helmet } from "react-helmet"
-import  Seo  from "../components/seo"
+import Seo from "../components/seo"
 
 const HomePageTemplate = () => {
   const { firebase } = useContext(FirebaseContext)

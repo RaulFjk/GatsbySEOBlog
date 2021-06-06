@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
-import PropTypes from "prop-types"
-import { graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import { FirebaseContext } from "./Firebase"
 import { StaticImage } from "gatsby-plugin-image"
 

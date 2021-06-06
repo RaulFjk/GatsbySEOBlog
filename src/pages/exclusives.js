@@ -1,8 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import PostPageTemplate from "../templates/postPageTemplate"
-import Layout from "../components/layout"
+
 
 const ExclusivesPage = (props) => {
   return (

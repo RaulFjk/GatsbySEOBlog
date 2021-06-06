@@ -1,5 +1,4 @@
 import React from "react"
-
 import BigPost from "./BigPost"
 
 const PostSection = ({ articles }) => {

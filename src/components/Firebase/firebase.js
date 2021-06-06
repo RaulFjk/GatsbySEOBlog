@@ -40,9 +40,6 @@ class Firebase {
       .onSnapshot(onSnapshot)
   }
 
-  async getAuthors() {
-    return this.db.collection("authors").get()
-  }
 
   async deleteArticle(articleId) {
     return this.db.collection("articles").doc(articleId).delete()
@@ -50,16 +47,6 @@ class Firebase {
 
   async getCategories() {
     return this.db.collection("categories").get()
-  }
-
-  async createBook({ bookName, authorId, bookCover, summary }) {
-    const createBookCallable = this.functions.httpsCallable("createBook")
-    return createBookCallable({
-      bookName,
-      authorId,
-      bookCover,
-      summary,
-    })
   }
 
   async createArticle({ title, content, categoryName, articleCover, featured, author }) {
@@ -84,40 +71,6 @@ class Firebase {
       featured,
       articleId
     })
-  }
-
-  async createAuthor({ authorName }) {
-    const createAuthorCallable = this.functions.httpsCallable("createAuthor")
-    return createAuthorCallable({
-      authorName,
-    })
-  }
-
-  async register({ email, password, username }) {
-    await this.auth.createUserWithEmailAndPassword(email, password)
-    const createProfileCallable = this.functions.httpsCallable(
-      "createPublicProfile"
-    )
-    return createProfileCallable({
-      username,
-    })
-  }
-
-  async postComment({ text, bookId }) {
-    const postCommentCallable = this.functions.httpsCallable("postComment")
-    return postCommentCallable({
-      text,
-      bookId,
-    })
-  }
-
-  subscribeToBookComments({ bookId, onSnapshot }) {
-    const bookRef = this.db.collection("books").doc(bookId)
-    return this.db
-      .collection("comments")
-      .where("book", "==", bookRef)
-      .orderBy("dateCreated", "desc")
-      .onSnapshot(onSnapshot)
   }
 
   subscribeToLatestNews({ onSnapshot }) {

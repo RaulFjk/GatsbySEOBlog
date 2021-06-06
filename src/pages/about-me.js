@@ -1,6 +1,5 @@
 import { graphql } from "gatsby"
 import React from "react"
-import { aboutWallpaper } from "../../static/aboutWallpaper.jpg"
 
 const AboutMe = props => {
   return (

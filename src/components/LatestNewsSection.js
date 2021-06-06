@@ -1,60 +1,21 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useEffect, useState } from "react"
 import BigPost from "./BigPost"
-import { FirebaseContext } from "./Firebase"
+
 
 const LatestNewsSection = ({ firebase }) => {
-  // const {firebase} =  useContext(FirebaseContext);
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
-    let promises = []
     const unsubscribe = firebase.subscribeToLatestNews({
       onSnapshot: snapshot => {
         const snapshotArticles = []
 
         snapshot.forEach(doc => {
-          // let article = doc.data()
-          // let dataAuthor
-          // if (article.author) {
-          //  // promises.push(article.author.get())
-          //   dataAuthor = await article.author.get()
-          //   console.log(dataAuthor.data())
-          //   // .then(res =>{
-          //   //   let authorData = res.data()
-          //   //   let addArticle = doc.data()
-          //   //   finishedArticles.push({
-          //   //     id: doc.id,
-          //   //     authorData: authorData,
-          //   //     ...addArticle
-          //   //   })
-          //   // }
-          //   // )
-          //   // .catch(err => console.log(err))
-          //   // if(finishedArticles.length > 0){
-          //   //   setArticles(finishedArticles)
-          //   // }
-          // }
           snapshotArticles.push({
             id: doc.id,
             ...doc.data(),
           })
         })
-
-        // const solvedPromises = Promise.all(promises)
-        // let authorData = []
-        // solvedPromises.then( data => {
-        //   data.forEach( p => {
-        //     authorData.push({
-        //       id: p.id,
-        //       ...p.data()
-        //     })
-        //   })
-        // }
-        // )
-        // authorData.forEach( (author, index) =>{
-        //   console.log(author + '' + index)
-
-        // })
 
         setArticles(snapshotArticles)
       },
