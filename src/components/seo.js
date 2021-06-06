@@ -19,6 +19,7 @@ function Seo({ description, lang, title, author, keywords, image }) {
           siteMetadata {
             title
             description
+            image
             author
           }
         }
@@ -60,7 +61,7 @@ function Seo({ description, lang, title, author, keywords, image }) {
         },
         {
           name: `twitter:card`,
-          content: `summary_large_image`,
+          content: `summary`,
         },
         {
           name: `twitter:creator`,

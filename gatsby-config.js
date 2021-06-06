@@ -7,7 +7,7 @@ module.exports = {
     title: `Krypto Life`,
     description: `A simple blog about crypto tech news developed with GatsbyJS`,
     image: `src/images/krypto-life-icon.png`,
-    author: `Raul Duma`,
+    author: `@miriammatean`,
   },
   plugins: [
     `gatsby-plugin-postcss`,
