@@ -17,7 +17,7 @@ function Seo({ description, url, lang, title, author, keywords, image, twitterUs
         site {
           siteMetadata {
             title
-            url
+            siteUrl
             description
             image
             twitterUsername
@@ -30,7 +30,7 @@ function Seo({ description, url, lang, title, author, keywords, image, twitterUs
 
   const metaDescription = description || site.siteMetadata.description
   const metaTitle = title || site.siteMetadata.title
-  const metaUrl = url || site.siteMetadata.url
+  const metaUrl = url || site.siteMetadata.siteUrl
   const defaultTitle = "Krypto Life"
   const metaAuthor = author || site.siteMetadata.author
   const metaImage  = image || site.siteMetadata.image

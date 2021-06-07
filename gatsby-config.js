@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Krypto Life`,
     description: `A simple blog about crypto tech news developed with GatsbyJS`,
-    url:`https://unruffled-allen-27e165.netlify.app`,
+    siteUrl:`https://unruffled-allen-27e165.netlify.app`,
     image: `/krypto-life-icon.png`,
     twitterUsername: `@miriammatean`,
     author: `Raul Duma`,
