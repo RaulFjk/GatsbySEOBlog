@@ -36,7 +36,7 @@ const ManageContent = () => {
   }
 
   return (
-    <div className="mt-24 flex-1 max-h-full mx-44 p-5 overflow-hidden">
+    <div className="mt-24 flex-1 max-h-full mx-auto p-5 overflow-hidden">
       <Seo title="Manage Content" />
       <div className="flex items-center justify-between">
         <div className="flex items-center">

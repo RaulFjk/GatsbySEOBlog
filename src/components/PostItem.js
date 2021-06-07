@@ -1,8 +1,23 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import moment from "moment"
 
-const PostItem = ({ title, content, authorFirstName, authorLastName, posted, category, image, authorAvatar }) => {
+
+
+const PostItem = ({ title, content, authorFirstName, authorLastName, posted, category, image, authorAvatar, firstKeyword, secondKeyword }) => {
+
+  const [keywords, setKeywords] = useState([])
+
+  useEffect(() => {
+    let keywordsArray = []
+    keywordsArray.push(firstKeyword);
+    keywordsArray.push(secondKeyword)
+    setKeywords(keywordsArray)
+  }, [])
+
+
+
+
   return (
     <section>
       <div className="mb-4 md:mb-0 w-full mt-24 p-4 lg:p-0">
@@ -17,9 +32,11 @@ const PostItem = ({ title, content, authorFirstName, authorLastName, posted, cat
               alt="avatar"
               className="mx-2 my-5 w-8 h-8 object-cover rounded-full hidden sm:block"
             /> */}
-            <span className="text-sm text-yellow-600">{authorFirstName + ' ' + authorLastName}</span>
+            <span className="text-md font-mono text-yellow-700">{authorFirstName + ' ' + authorLastName}</span>
             <span className="mx-2">|</span>
             <span className="text-sm text-gray-400">{moment(posted).format("HH:mm Do MMM YYYY")}</span>
+            <span className="mx-2">|</span>
+            <span className="text-yellow-700 font-mono">#{firstKeyword}#{secondKeyword}</span>
           </div>
         </div>
         <div className="mx-auto">

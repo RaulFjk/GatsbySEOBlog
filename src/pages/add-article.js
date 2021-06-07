@@ -13,6 +13,9 @@ const AddArticle = () => {
   const [featured, setFeatured] = useState(false)
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
+  const [firstKeyword, setFirstKeyword] = useState("")
+  const [secondKeyword, setSecondKeyword] = useState("")
+  const [description, setDescription] = useState("")
   const [articleCover, setArticleCover] = useState("")
   const [categories, setCategories] = useState([])
   const [categoryName, setCategoryName] = useState("")
@@ -72,6 +75,9 @@ const AddArticle = () => {
     firebase
       .createArticle({
         title,
+        firstKeyword,
+        secondKeyword,
+        description,
         content,
         categoryName,
         articleCover,
@@ -84,7 +90,8 @@ const AddArticle = () => {
           setAdded(false)
           navigate("/manage-content")
         }, 2000)
-      ).catch(err => alert("Something went wrong! Try again"))
+      )
+      .catch(err => alert("Something went wrong! Try again"))
   }
 
   if (!user) {
@@ -97,6 +104,15 @@ const AddArticle = () => {
         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div className="p-6 bg-white border-b border-gray-200">
             <form className="font-mono " onSubmit={handleSubmit}>
+            {/* <div className="mx-auto mb-5">
+              {articleCover && (
+                <img
+                  src={articleCover}
+                  className="min-w-full h-auto"
+                  alt="avatar"
+                />
+              )}
+            </div> */}
               <div className="mb-4">
                 <label className="text-xl text-gray-600">
                   Title <span className="text-red-500">*</span>
@@ -144,6 +160,59 @@ const AddArticle = () => {
                   ))}
                 </select>
               </div>
+              <div className="mb-4">
+                <div className="w-48">
+                  <label className="text-xl text-gray-600 ">
+                    Keyword 1 <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="border-2 border-gray-300 p-2"
+                    name="firstKeyword"
+                    id="firstKeyword"
+                    value={firstKeyword}
+                    onChange={e => {
+                      e.persist()
+                      setFirstKeyword(e.target.value)
+                      console.log(firstKeyword)
+                    }}
+                    required
+                  ></input>{" "}
+                </div>
+                <div className="w-48">
+                  <label className="text-xl text-gray-600 ">
+                    Keyword 2 <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="border-2 border-gray-300 p-2 "
+                    name="secondKeyword"
+                    id="secondKeyword"
+                    value={secondKeyword}
+                    onChange={e => {
+                      e.persist()
+                      setSecondKeyword(e.target.value)
+                      console.log(secondKeyword)
+                    }}
+                    required
+                  ></input>{" "}
+                </div>
+              </div>
+              <div className="mb-8">
+                <label className="text-xl text-gray-600">
+                  Description <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  className="border-2 border-gray-300 p-2 w-full"
+                  value={description}
+                  rows="4"
+                  onChange={e => {
+                    e.persist()
+                    setDescription(e.target.value)
+                    console.log(description)
+                  }}
+                />
+              </div>
               <div className="mb-8">
                 <label className="text-xl text-gray-600">
                   Content <span className="text-red-500">*</span>
@@ -151,6 +220,7 @@ const AddArticle = () => {
                 <textarea
                   className="border-2 border-gray-300 p-2 w-full"
                   value={content}
+                  rows="15"
                   onChange={e => {
                     e.persist()
                     setContent(e.target.value)

@@ -14,6 +14,9 @@ const EditPostTemplate = props => {
   const { firebase, user } = useContext(FirebaseContext)
   const [featured, setFeatured] = useState(props.data.article.featured)
   const [title, setTitle] = useState(props.data.article.title)
+  const [firstKeyword, setFirstKeyword] = useState(props.data.article.firstKeyword)
+  const [secondKeyword, setSecondKeyword] = useState(props.data.article.secondKeyword)
+  const [description, setDescription] = useState(props.data.article.description)
   const [content, setContent] = useState(props.data.article.content)
   const [articleCover, setArticleCover] = useState("")
   const [newCoverUrl, setNewCoverUrl] = useState("")
@@ -53,6 +56,9 @@ const EditPostTemplate = props => {
     firebase
       .updateArticle({
         title,
+        firstKeyword,
+        secondKeyword,
+        description,
         content,
         categoryName,
         articleCover,
@@ -62,10 +68,9 @@ const EditPostTemplate = props => {
       .then(() => navigate("/manage-content"))
   }
 
-  if(!user){
+  if (!user) {
     return null
   }
-
 
   return (
     <div className="py-12 mt-8">
@@ -148,6 +153,59 @@ const EditPostTemplate = props => {
                     )
                   })}
                 </select>
+              </div>
+              <div className="mb-4">
+                <div className="w-48">
+                  <label className="text-xl text-gray-600 ">
+                    Keyword 1 <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="border-2 border-gray-300 p-2"
+                    name="firstKeyword"
+                    id="firstKeyword"
+                    value={firstKeyword}
+                    onChange={e => {
+                      e.persist()
+                      setFirstKeyword(e.target.value)
+                      console.log(firstKeyword)
+                    }}
+                    required
+                  ></input>{" "}
+                </div>
+                <div className="w-48">
+                  <label className="text-xl text-gray-600 ">
+                    Keyword 2 <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    className="border-2 border-gray-300 p-2 "
+                    name="secondKeyword"
+                    id="secondKeyword"
+                    value={secondKeyword}
+                    onChange={e => {
+                      e.persist()
+                      setSecondKeyword(e.target.value)
+                      console.log(secondKeyword)
+                    }}
+                    required
+                  ></input>{" "}
+                </div>
+              </div>
+              <div className="mb-8">
+                <label className="text-xl text-gray-600">
+                  Description <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  className="border-2 border-gray-300 p-2 w-full"
+                  value={description}
+                  rows="4"
+                  onChange={e => {
+                    e.persist()
+                    setDescription(e.target.value)
+                    console.log(description)
+                  }}
+                />
               </div>
               <div className="mb-8">
                 <label className="text-xl text-gray-600">

@@ -78,6 +78,10 @@ function Seo({ description, url, lang, title, author, keywords, image, twitterUs
           content: metaTitle,
         },
         {
+          name: `twitter:image`,
+          content: metaImage,
+        },
+        {
           name: `twitter:description`,
           content: metaDescription,
         },

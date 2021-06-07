@@ -35,6 +35,8 @@ module.exports = {
             collection: 'articles',
             map: doc => ({
               title: doc.title,
+              firstKeyword: doc.firstKeyword,
+              secondKeyword: doc.secondKeyword,
               content: doc.content,
               description: doc.description,
               category: doc.category,

@@ -19,12 +19,13 @@ const LoginPage = () => {
 
     firebase
       .login({ email: formValues.email, password: formValues.password })
-      .then(
-        () => navigate("/")
-        )
+      .then(() => navigate("/"))
       .catch(error => {
         if (isMounted) {
           setErrorMessage(error.message)
+          setTimeout(() => {
+            setErrorMessage("")
+          }, 3000)
         }
       })
   }
@@ -90,6 +91,11 @@ const LoginPage = () => {
                 Login
               </button>
             </form>
+            {errorMessage && (
+              <div className="bg-red-600 text-gray-900 py-4 px-4 rounded-md">
+                <span className="text-lg"> {errorMessage} Please try again! </span>
+              </div>
+            )}
           </div>
         </div>
       </section>

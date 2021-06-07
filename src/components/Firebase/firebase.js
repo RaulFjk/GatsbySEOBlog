@@ -49,10 +49,13 @@ class Firebase {
     return this.db.collection("categories").get()
   }
 
-  async createArticle({ title, content, categoryName, articleCover, featured, author }) {
+  async createArticle({ title, firstKeyword, secondKeyword, description, content, categoryName, articleCover, featured, author }) {
     const createArticleCallable = this.functions.httpsCallable("createArticle")
     return createArticleCallable({
       title,
+      firstKeyword,
+      secondKeyword,
+      description,
       content,
       categoryName,
       articleCover,
@@ -61,10 +64,13 @@ class Firebase {
     })
   }
 
-  async updateArticle({ title, content, categoryName, articleCover, featured, articleId }) {
+  async updateArticle({ title, firstKeyword, secondKeyword, description, content, categoryName, articleCover, featured, articleId }) {
     const updateArticleCallable = this.functions.httpsCallable("updateArticle")
     return updateArticleCallable({
       title,
+      firstKeyword,
+      secondKeyword,
+      description,
       content,
       categoryName,
       articleCover,
