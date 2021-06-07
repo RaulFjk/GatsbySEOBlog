@@ -9,7 +9,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import { data } from "autoprefixer"
 
 function Seo({ description, url, lang, title, author, keywords, image, twitterUsername }) {
   const { site } = useStaticQuery(
