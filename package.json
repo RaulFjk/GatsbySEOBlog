@@ -22,7 +22,7 @@
     "gatsby-plugin-remote-images": "^3.0.0",
     "gatsby-plugin-robots-txt": "^1.6.2",
     "gatsby-plugin-sharp": "^3.4.2",
-    "gatsby-plugin-sitemap": "^4.2.0",
+    "gatsby-plugin-sitemap": "^3.3.0",
     "gatsby-source-filesystem": "^3.4.0",
     "gatsby-transformer-sharp": "^3.4.0",
     "node-fetch": "^2.6.1",
