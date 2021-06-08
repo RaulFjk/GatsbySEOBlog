@@ -7,7 +7,7 @@ module.exports = {
     title: `Krypto Life`,
     description: `A simple blog about crypto tech news developed with GatsbyJS`,
     siteUrl:`https://unruffled-allen-27e165.netlify.app`,
-    image: `./kryptolife.jpg`,
+    image: `/kryptolife.jpg`,
     twitterUsername: `@miriammatean`,
     author: `Raul Duma`,
   },
