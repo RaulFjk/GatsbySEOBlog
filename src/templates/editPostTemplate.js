@@ -3,6 +3,7 @@ import { FirebaseContext } from "../components/Firebase"
 import { graphql } from "gatsby"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { navigate } from "gatsby"
+import Seo from "../components/seo"
 
 let fileReader
 
@@ -14,8 +15,12 @@ const EditPostTemplate = props => {
   const { firebase, user } = useContext(FirebaseContext)
   const [featured, setFeatured] = useState(props.data.article.featured)
   const [title, setTitle] = useState(props.data.article.title)
-  const [firstKeyword, setFirstKeyword] = useState(props.data.article.firstKeyword)
-  const [secondKeyword, setSecondKeyword] = useState(props.data.article.secondKeyword)
+  const [firstKeyword, setFirstKeyword] = useState(
+    props.data.article.firstKeyword
+  )
+  const [secondKeyword, setSecondKeyword] = useState(
+    props.data.article.secondKeyword
+  )
   const [description, setDescription] = useState(props.data.article.description)
   const [content, setContent] = useState(props.data.article.content)
   const [articleCover, setArticleCover] = useState("")
@@ -23,6 +28,7 @@ const EditPostTemplate = props => {
   const [categories, setCategories] = useState([])
   const [categoryName, setCategoryName] = useState(props.data.article.category)
   const [articleId, setArticleId] = useState(props.data.article.id)
+  const [updated, setUpdated] = useState(false)
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
@@ -65,7 +71,13 @@ const EditPostTemplate = props => {
         featured,
         articleId,
       })
-      .then(() => navigate("/manage-content"))
+      .then(
+        setUpdated(true),
+        setTimeout(() => {
+          setUpdated(false)
+          navigate("/manage-content")
+        }, 3000)
+      ).catch((err) => alert(err));
   }
 
   if (!user) {
@@ -74,6 +86,10 @@ const EditPostTemplate = props => {
 
   return (
     <div className="py-12 mt-8">
+      <Seo
+        title="Edit Article"
+        description={props.data.article.description}
+      />
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div className="p-6 bg-white border-b border-gray-200">
@@ -255,6 +271,11 @@ const EditPostTemplate = props => {
                 </label>
               </div>
             </form>
+            {updated && (
+              <div className="my-5 mx-auto w-56 bg-green-300 shadow-lg p-5 text-red-700 font-mono">
+                Article updated!
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -277,6 +298,9 @@ export const query = graphql`
       id
       category
       content
+      firstKeyword
+      secondKeyword
+      description
       title
       featured
       localImage {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import { FirebaseContext } from "../components/Firebase"
 import { navigate } from "gatsby"
+import Seo from "../components/seo"
 
 let fileReader
 
@@ -91,7 +92,7 @@ const AddArticle = () => {
           navigate("/manage-content")
         }, 2000)
       )
-      .catch(err => alert("Something went wrong! Try again"))
+      .catch(err => alert(err))
   }
 
   if (!user) {
@@ -100,11 +101,12 @@ const AddArticle = () => {
 
   return (
     <div className="py-12 mt-16">
+      <Seo title="Add Article" description="Create new article" />
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div className="p-6 bg-white border-b border-gray-200">
             <form className="font-mono " onSubmit={handleSubmit}>
-            {/* <div className="mx-auto mb-5">
+              {/* <div className="mx-auto mb-5">
               {articleCover && (
                 <img
                   src={articleCover}
@@ -174,7 +176,6 @@ const AddArticle = () => {
                     onChange={e => {
                       e.persist()
                       setFirstKeyword(e.target.value)
-                      console.log(firstKeyword)
                     }}
                     required
                   ></input>{" "}
@@ -192,7 +193,6 @@ const AddArticle = () => {
                     onChange={e => {
                       e.persist()
                       setSecondKeyword(e.target.value)
-                      console.log(secondKeyword)
                     }}
                     required
                   ></input>{" "}
@@ -209,7 +209,6 @@ const AddArticle = () => {
                   onChange={e => {
                     e.persist()
                     setDescription(e.target.value)
-                    console.log(description)
                   }}
                 />
               </div>

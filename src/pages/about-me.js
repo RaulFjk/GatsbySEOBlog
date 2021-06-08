@@ -1,9 +1,16 @@
 import { graphql } from "gatsby"
 import React from "react"
+import Seo from "../components/seo"
 
 const AboutMe = props => {
   return (
     <div className="">
+      <Seo
+        title="About Me"
+        description="A short description about the author"
+        keywords={["aboutme", "author"]}
+        image={`../../aboutWallpaper.jpg`}
+      />
       <div className="block">
         <div className="min-w-full h-96 overflow-hidden">
           <img
