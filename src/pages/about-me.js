@@ -9,7 +9,7 @@ const AboutMe = props => {
         title="About Me"
         description="A short description about the author"
         keywords={["aboutme", "author"]}
-        image={`/aboutWallpaper.jpg`}
+        image={`/static/aboutWallpaper.jpg`}
       />
       <div className="block">
         <div className="min-w-full h-96 overflow-hidden">
