@@ -67,7 +67,7 @@ const MainPost = ({
         to={`/article/${id}`}
         aria-current="location"
       >
-        Read more
+        Discover Article
       </Link>
     </div>
   )
